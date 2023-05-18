@@ -23,8 +23,10 @@ public class Student
 
     public void enrollToCourse( Course course )
     {
+        if (!isAttendingCourse(course.getCode())) {
+           courses.add(course);
+        }
         //TODO implement this method
-        // this already works though? how are we implementing a function that's already functioning?
     }
 
     public void registerApprovedCourse( Course course )
@@ -35,9 +37,15 @@ public class Student
 
     public boolean isAttendingCourse( String courseCode )
     {
-        //TODO implement this method
+        for (Course course : courses) {
+            if (course.getCode().equals(courseCode)) {
+                System.out.println("Student already enrolled in course!");
+                return true;
+            }
+        }
         return false;
     }
+
 
     @Override
     public double getAverage()
