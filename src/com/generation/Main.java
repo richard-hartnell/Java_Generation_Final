@@ -66,10 +66,12 @@ public class Main
             return;
         }
         System.out.println( course );
-        courseService.enrollStudent( courseId, student );
-        studentService.enrollToCourse( studentId, course );
-        System.out.println( "Student with ID: " + studentId + " enrolled successfully to " + courseId );
-
+        if (student.isAttendingCourse(course.getCode()) == false) {
+            courseService.enrollStudent(courseId, student);
+            studentService.enrollToCourse(studentId, course);
+        } else {
+        System.out.println("Double enrollment error");
+        }
     }
 
     private static void showCoursesSummary( CourseService courseService, Scanner scanner )

@@ -23,10 +23,13 @@ public class Student
 
     public void enrollToCourse( Course course )
     {
-        if (!isAttendingCourse(course.getCode())) {
-           courses.add(course);
+        // new code
+        if (isAttendingCourse(course.getCode()) == false) {
+            courses.add(course);
+            System.out.println("Student with ID: " + this.getId() + " enrolled successfully to " + course.getCode());
+        } else {
+            System.out.println("Double-enrollment attempt");
         }
-        //TODO implement this method
     }
 
     public void registerApprovedCourse( Course course )
